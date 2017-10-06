@@ -74,7 +74,7 @@ public class PaintMenuBar extends JMenuBar
             
             if ( event.getSource() == saveAsWhiteboard )
             {
-            	Client.paint.saveFile();
+            	Client.paint.saveAsFile();
             }
 
             if ( event.getSource() == openWhiteboard )

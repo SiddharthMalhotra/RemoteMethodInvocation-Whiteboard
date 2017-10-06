@@ -6,6 +6,7 @@ package whiteboardapplication;
 import whiteboarddrawtools.*;
 import whiteboardtools.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import whiteboardcontrols.*;
@@ -13,6 +14,7 @@ import whiteboardcontrols.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Scanner;
 
@@ -36,15 +38,20 @@ public class PaintApplication extends JFrame
         colorPicker = new ColorPicker();
         paintTools  = new PaintToolPanel(new PencilToolPanel(Tool.PENCIL, 1));
                 
+        setJMenuBar(menuBar);
+        
         GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            //.addComponent(menuBar)
             .addGroup(layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paintTools, javax.swing.GroupLayout.DEFAULT_SIZE, 200, javax.swing.GroupLayout.DEFAULT_SIZE)
                     .addComponent(colorPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(drawPanel)
+       
+            
         ));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -55,6 +62,7 @@ public class PaintApplication extends JFrame
                 .addComponent(paintTools, javax.swing.GroupLayout.DEFAULT_SIZE, 640, javax.swing.GroupLayout.DEFAULT_SIZE) 
                 				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE))
                 .addComponent(colorPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                
         );
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -156,15 +164,27 @@ public class PaintApplication extends JFrame
     }
 
     public void saveFile()
-    {
+    {        
         try
         {
+        		Component component = drawPanel;
             JFileChooser chooseDirec = new JFileChooser();
             chooseDirec.setFileSelectionMode(JFileChooser.FILES_ONLY);
             chooseDirec.showSaveDialog(Client.paint);
             File file = chooseDirec.getSelectedFile();
-            file = new File(file+".png");
-            
+            file = new File(file+".mypaint");
+            Rectangle rect = component.getBounds();
+          
+                String format = "mypaint";
+                BufferedImage captureImage =
+                        new BufferedImage(rect.width, rect.height,
+                                            BufferedImage.TYPE_INT_ARGB);
+                component.paint(captureImage.getGraphics());
+         
+//                ImageIO.write(captureImage, format, file);
+         
+                System.out.printf("File %s was saved!", component.getName());
+         
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 
             bufferedWriter.close();
@@ -179,6 +199,42 @@ public class PaintApplication extends JFrame
         }
     }
 
+    public void saveAsFile()
+    {
+        try
+        {
+        		Component component = drawPanel;
+            JFileChooser chooseDirec = new JFileChooser();
+            chooseDirec.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            chooseDirec.showSaveDialog(Client.paint);
+            File file = chooseDirec.getSelectedFile();
+            file = new File(file+".png");
+            Rectangle rect = component.getBounds();
+          
+                String format = "png";
+                BufferedImage captureImage =
+                        new BufferedImage(rect.width, rect.height,
+                                            BufferedImage.TYPE_INT_ARGB);
+                component.paint(captureImage.getGraphics());
+         
+                ImageIO.write(captureImage, format, file);
+         
+                System.out.printf("File %s was saved!", component.getName());
+//         
+//            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+//
+//            bufferedWriter.close();
+//
+//            openFile(file);
+//            writeSketchToFile(file);
+//            closeFile();
+        }
+        catch (IOException exception)
+        {
+            System.err.println("Error saving to new file.");
+        }   
+    }
+    
     public void closeFile()
     {
         try
