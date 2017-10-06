@@ -5,6 +5,23 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/resources", "src/main/configs"
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'au.edu.unimelb.distributedsystems.whiteboard.client.app.Client'
+        )
+    }
+}
+
 repositories {
     mavenCentral()
 }

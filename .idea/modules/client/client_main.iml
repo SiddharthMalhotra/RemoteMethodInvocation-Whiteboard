@@ -5,6 +5,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../client/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../client/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../client/src/main/configs" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../client/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
