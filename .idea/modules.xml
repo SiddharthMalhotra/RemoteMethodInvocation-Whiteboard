@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Whiteboard.iml" filepath="$PROJECT_DIR$/Whiteboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/client.iml" filepath="$PROJECT_DIR$/.idea/modules/client/client.iml" group="client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/client/client_main.iml" group="client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/client/client_test.iml" group="client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/server.iml" filepath="$PROJECT_DIR$/.idea/modules/server/server.iml" group="server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/server/server_main.iml" group="server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server/server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/server/server_test.iml" group="server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/whiteboard.iml" filepath="$PROJECT_DIR$/.idea/modules/whiteboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/whiteboard_main.iml" filepath="$PROJECT_DIR$/.idea/modules/whiteboard_main.iml" group="whiteboard" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/whiteboard_test.iml" filepath="$PROJECT_DIR$/.idea/modules/whiteboard_test.iml" group="whiteboard" />
+    </modules>
+  </component>
+</project>
